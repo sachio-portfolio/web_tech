@@ -17,5 +17,7 @@ server = WEBrick::HTTPServer.new({
 server.mount('/test', WEBrick::HTTPServlet::ERBHandler, 'test.html.erb')
 # <form action='indicate.cgi'> 〜 </form>の内部にある値を、indicate.rbに送信することができるようになる
 server.mount('/indicate.cgi', WEBrick::HTTPServlet::CGIHandler, 'indicate.rb')
+# goyaDBの情報を出力するためのページを作る準備
+server.mount('/goya.cgi', WEBrick::HTTPServlet::CGIHandler, 'goya.rb')
 # Webrickのサーバを起動させる
 server.start
