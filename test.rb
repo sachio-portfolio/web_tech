@@ -15,5 +15,7 @@ server = WEBrick::HTTPServer.new({
 }
 # Webサーバを起動した状態で、（DocumentRootの値）/testというURLを送信すると、同じディレクトリ階層にあるtest.html.erbファイルを表示するという機能を付与
 server.mount('/test', WEBrick::HTTPServlet::ERBHandler, 'test.html.erb')
+# <form action='indicate.cgi'> 〜 </form>の内部にある値を、indicate.rbに送信することができるようになる
+server.mount('/indicate.cgi', WEBrick::HTTPServlet::CGIHandler, 'indicate.rb')
 # Webrickのサーバを起動させる
 server.start
